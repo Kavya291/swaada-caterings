@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, Users, Clock, Sparkles, ChefHat, Heart } from "lucide-react";
+import { Award, Users, Clock } from "lucide-react";
 import Link from "next/link";
 
 const fadeUp = {
@@ -86,10 +86,10 @@ export default function AboutContent() {
               variants={fadeUp}
               custom={2}
             >
-              Swaada Caterings & Services was born from a simple belief: every celebration 
-              deserves food that&apos;s made with heart. Rooted in the heart of Karnataka, 
-              we work with a passion for authentic Indian cuisine and a commitment to making 
-              every event truly special. From the aroma of freshly ground spices to the warmth 
+              Swaada Caterings & Services was born from a simple belief: every celebration
+              deserves food that&apos;s made with heart. Rooted in the heart of Karnataka,
+              we work with a passion for authentic Indian cuisine and a commitment to making
+              every event truly special. From the aroma of freshly ground spices to the warmth
               of home-cooked flavors, every dish we prepare tells a story of tradition and love.
             </motion.p>
             <motion.p
@@ -97,11 +97,11 @@ export default function AboutContent() {
               variants={fadeUp}
               custom={3}
             >
-              Today, we proudly serve all over Karnataka — from intimate family 
-              gatherings of 100 guests to grand celebrations of 2000+. Our team of experienced 
-              chefs, trained service staff, and dedicated event coordinators work together to 
-              ensure every meal is a memorable experience. Whether it&apos;s a traditional 
-              Karnataka wedding feast or a contemporary corporate gala, Swaada brings the 
+              Today, we proudly serve all over Karnataka — from intimate family
+              gatherings of 100 guests to grand celebrations of 2000+. Our team of experienced
+              chefs, trained service staff, and dedicated event coordinators work together to
+              ensure every meal is a memorable experience. Whether it&apos;s a traditional
+              Karnataka wedding feast or a contemporary corporate gala, Swaada brings the
               perfect blend of flavor, presentation, and service.
             </motion.p>
           </motion.div>
@@ -175,8 +175,8 @@ export default function AboutContent() {
               Team Swaada
             </h2>
             <p className="text-lg text-dark-light leading-relaxed mb-8">
-              Our strength lies in our collaborative spirit. From our master chefs to our 
-              diligent service staff, every member of Team Swaada is committed to culinary 
+              Our strength lies in our collaborative spirit. From our master chefs to our
+              diligent service staff, every member of Team Swaada is committed to culinary
               excellence and hospitality.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-12">

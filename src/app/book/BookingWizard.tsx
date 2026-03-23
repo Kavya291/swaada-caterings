@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   MapPin,
@@ -463,7 +464,7 @@ export default function BookingWizard() {
           /^[6-9]\d{9}$/.test(form.phone) &&
           form.eventDate !== "" &&
           new Date(form.eventDate) >=
-            new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+          new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
         );
       default:
         return false;
@@ -505,12 +506,12 @@ export default function BookingWizard() {
             >
               🚀 Send to WhatsApp Now
             </a>
-            <a
+            <Link
               href="/"
               className="w-full inline-flex items-center justify-center px-6 py-3 text-dark-light hover:text-saffron transition-all"
             >
               Go back to Home
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>
@@ -535,13 +536,12 @@ export default function BookingWizard() {
                 className="relative z-10 flex flex-col items-center"
               >
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 ${
-                    i < step
-                      ? "bg-saffron text-white"
-                      : i === step
+                  className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 ${i < step
+                    ? "bg-saffron text-white"
+                    : i === step
                       ? "bg-saffron text-white ring-4 ring-saffron/20"
                       : "bg-gray-200 text-gray-400"
-                  }`}
+                    }`}
                 >
                   {i < step ? (
                     <Check size={18} />
@@ -550,9 +550,8 @@ export default function BookingWizard() {
                   )}
                 </div>
                 <span
-                  className={`mt-2 text-xs font-medium hidden sm:block ${
-                    i <= step ? "text-saffron" : "text-gray-400"
-                  }`}
+                  className={`mt-2 text-xs font-medium hidden sm:block ${i <= step ? "text-saffron" : "text-gray-400"
+                    }`}
                 >
                   {s.label}
                 </span>
@@ -613,11 +612,10 @@ export default function BookingWizard() {
             <button
               onClick={() => canNext && setStep(step + 1)}
               disabled={!canNext}
-              className={`flex items-center gap-2 px-8 py-3 rounded-full font-semibold transition-all ${
-                canNext
-                  ? "bg-saffron text-white hover:bg-saffron-dark shadow-lg hover:shadow-xl"
-                  : "bg-gray-200 text-gray-400 cursor-not-allowed"
-              }`}
+              className={`flex items-center gap-2 px-8 py-3 rounded-full font-semibold transition-all ${canNext
+                ? "bg-saffron text-white hover:bg-saffron-dark shadow-lg hover:shadow-xl"
+                : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                }`}
             >
               Next <ChevronRight size={18} />
             </button>
@@ -625,11 +623,10 @@ export default function BookingWizard() {
             <button
               onClick={() => canNext && handleSubmit()}
               disabled={!canNext}
-              className={`flex items-center gap-2 px-8 py-3 rounded-full font-semibold transition-all ${
-                canNext
-                  ? "bg-saffron text-white hover:bg-saffron-dark shadow-lg hover:shadow-xl"
-                  : "bg-gray-200 text-gray-400 cursor-not-allowed"
-              }`}
+              className={`flex items-center gap-2 px-8 py-3 rounded-full font-semibold transition-all ${canNext
+                ? "bg-saffron text-white hover:bg-saffron-dark shadow-lg hover:shadow-xl"
+                : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                }`}
             >
               Submit Booking <Check size={18} />
             </button>
@@ -660,11 +657,10 @@ function StepLocation({
           <button
             key={city}
             onClick={() => update({ location: city })}
-            className={`relative p-4 rounded-xl border-2 transition-all duration-200 flex flex-col items-center gap-2 hover:shadow-md ${
-              form.location === city
-                ? "border-saffron bg-saffron/5 shadow-md"
-                : "border-gray-100 hover:border-saffron/30"
-            }`}
+            className={`relative p-4 rounded-xl border-2 transition-all duration-200 flex flex-col items-center gap-2 hover:shadow-md ${form.location === city
+              ? "border-saffron bg-saffron/5 shadow-md"
+              : "border-gray-100 hover:border-saffron/30"
+              }`}
           >
             {form.location === city && (
               <div className="absolute top-2 right-2 w-5 h-5 bg-saffron rounded-full flex items-center justify-center">
@@ -724,11 +720,10 @@ function StepOccasion({
           <button
             key={o.label}
             onClick={() => update({ occasion: o.label })}
-            className={`relative p-4 md:p-5 rounded-xl border-2 transition-all duration-200 flex flex-col items-center gap-2 hover:shadow-md ${
-              form.occasion === o.label
-                ? "border-saffron bg-saffron/5 shadow-md"
-                : "border-gray-100 hover:border-saffron/30"
-            }`}
+            className={`relative p-4 md:p-5 rounded-xl border-2 transition-all duration-200 flex flex-col items-center gap-2 hover:shadow-md ${form.occasion === o.label
+              ? "border-saffron bg-saffron/5 shadow-md"
+              : "border-gray-100 hover:border-saffron/30"
+              }`}
           >
             {form.occasion === o.label && (
               <div className="absolute top-2 right-2 w-5 h-5 bg-saffron rounded-full flex items-center justify-center">
@@ -832,13 +827,6 @@ function StepMealPlan({
 }) {
   const [expanded, setExpanded] = useState<string[]>(["Breakfast Items"]);
 
-  const toggleStandard = (id: string) => {
-    const next = form.selectedStandard.includes(id)
-      ? form.selectedStandard.filter((x) => x !== id)
-      : [...form.selectedStandard, id];
-    update({ selectedStandard: next });
-  };
-
   const toggleCustom = (name: string) => {
     const next = form.selectedCustom.includes(name)
       ? form.selectedCustom.filter((x) => x !== name)
@@ -865,21 +853,19 @@ function StepMealPlan({
       <div className="flex rounded-xl bg-gray-100 p-1 mb-6">
         <button
           onClick={() => update({ planType: "standard" })}
-          className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-semibold transition-all ${
-            form.planType === "standard"
-              ? "bg-saffron text-white shadow-md"
-              : "text-dark-light hover:text-saffron"
-          }`}
+          className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-semibold transition-all ${form.planType === "standard"
+            ? "bg-saffron text-white shadow-md"
+            : "text-dark-light hover:text-saffron"
+            }`}
         >
           Standard Plans
         </button>
         <button
           onClick={() => update({ planType: "custom" })}
-          className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-semibold transition-all ${
-            form.planType === "custom"
-              ? "bg-saffron text-white shadow-md"
-              : "text-dark-light hover:text-saffron"
-          }`}
+          className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-semibold transition-all ${form.planType === "custom"
+            ? "bg-saffron text-white shadow-md"
+            : "text-dark-light hover:text-saffron"
+            }`}
         >
           Build Your Own
         </button>
@@ -887,63 +873,63 @@ function StepMealPlan({
 
       {form.planType === "standard" ? (
         <>
-        <div className="space-y-8">
-          <PlanCategory
-            title="Breakfast Options"
-            plans={standardPlans.breakfast}
-            selected={form.selectedStandard}
-            onToggle={(id) => {
-              // Only allow one breakfast plan
-              const currentOther = form.selectedStandard.filter(x => !x.startsWith('br-'));
-              const next = form.selectedStandard.includes(id) ? currentOther : [...currentOther, id];
-              update({ selectedStandard: next });
-            }}
-          />
-          <PlanCategory
-            title="Lunch Options"
-            plans={standardPlans.lunch}
-            selected={form.selectedStandard}
-            onToggle={(id) => {
-              const currentOther = form.selectedStandard.filter(x => !x.startsWith('ln-'));
-              const next = form.selectedStandard.includes(id) ? currentOther : [...currentOther, id];
-              update({ selectedStandard: next });
-            }}
-          />
-          <PlanCategory
-            title="Dinner Options"
-            plans={standardPlans.dinner}
-            selected={form.selectedStandard}
-            onToggle={(id) => {
-              const currentOther = form.selectedStandard.filter(x => !x.startsWith('dn-'));
-              const next = form.selectedStandard.includes(id) ? currentOther : [...currentOther, id];
-              update({ selectedStandard: next });
-            }}
-          />
-          
-          <div className="p-6 rounded-2xl bg-cream border border-saffron/20 text-center">
-            <h4 className="font-heading font-bold text-dark mb-2">Need something else?</h4>
-            <p className="text-sm text-dark-light mb-4">
-              Our standard plans are just the beginning. We can customize any menu to fit your needs, budget, and tradition.
-            </p>
-            <a 
-              href="tel:8105758067"
-              className="inline-flex items-center gap-2 text-saffron font-bold hover:underline"
-            >
-              📱 Call us at 8105758067 to discuss
-            </a>
-          </div>
+          <div className="space-y-8">
+            <PlanCategory
+              title="Breakfast Options"
+              plans={standardPlans.breakfast}
+              selected={form.selectedStandard}
+              onToggle={(id) => {
+                // Only allow one breakfast plan
+                const currentOther = form.selectedStandard.filter(x => !x.startsWith('br-'));
+                const next = form.selectedStandard.includes(id) ? currentOther : [...currentOther, id];
+                update({ selectedStandard: next });
+              }}
+            />
+            <PlanCategory
+              title="Lunch Options"
+              plans={standardPlans.lunch}
+              selected={form.selectedStandard}
+              onToggle={(id) => {
+                const currentOther = form.selectedStandard.filter(x => !x.startsWith('ln-'));
+                const next = form.selectedStandard.includes(id) ? currentOther : [...currentOther, id];
+                update({ selectedStandard: next });
+              }}
+            />
+            <PlanCategory
+              title="Dinner Options"
+              plans={standardPlans.dinner}
+              selected={form.selectedStandard}
+              onToggle={(id) => {
+                const currentOther = form.selectedStandard.filter(x => !x.startsWith('dn-'));
+                const next = form.selectedStandard.includes(id) ? currentOther : [...currentOther, id];
+                update({ selectedStandard: next });
+              }}
+            />
 
-          {form.selectedStandard.length > 0 && (
-            <div className="p-4 rounded-xl bg-saffron/5 border border-saffron/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <div className="text-sm text-dark">
-                <strong>Current Estimate:</strong> {form.guests} guests
-              </div>
-              <div className="text-lg font-bold text-saffron">
-                Per Plate: {formatINR(standardTotal)} | Total: {formatINR(standardTotal * form.guests)}
-              </div>
+            <div className="p-6 rounded-2xl bg-cream border border-saffron/20 text-center">
+              <h4 className="font-heading font-bold text-dark mb-2">Need something else?</h4>
+              <p className="text-sm text-dark-light mb-4">
+                Our standard plans are just the beginning. We can customize any menu to fit your needs, budget, and tradition.
+              </p>
+              <a
+                href="tel:8105758067"
+                className="inline-flex items-center gap-2 text-saffron font-bold hover:underline"
+              >
+                📱 Call us at 8105758067 to discuss
+              </a>
             </div>
-          )}
-        </div>
+
+            {form.selectedStandard.length > 0 && (
+              <div className="p-4 rounded-xl bg-saffron/5 border border-saffron/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div className="text-sm text-dark">
+                  <strong>Current Estimate:</strong> {form.guests} guests
+                </div>
+                <div className="text-lg font-bold text-saffron">
+                  Per Plate: {formatINR(standardTotal)} | Total: {formatINR(standardTotal * form.guests)}
+                </div>
+              </div>
+            )}
+          </div>
         </>
       ) : (
         <>
@@ -970,9 +956,8 @@ function StepMealPlan({
                     </div>
                     <ChevronDown
                       size={18}
-                      className={`text-gray-400 transition-transform ${
-                        isExpanded ? "rotate-180" : ""
-                      }`}
+                      className={`text-gray-400 transition-transform ${isExpanded ? "rotate-180" : ""
+                        }`}
                     />
                   </button>
                   <AnimatePresence>
@@ -991,11 +976,10 @@ function StepMealPlan({
                             return (
                               <label
                                 key={item.name}
-                                className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all ${
-                                  checked
-                                    ? "bg-saffron/5 border border-saffron/20"
-                                    : "hover:bg-gray-50 border border-transparent"
-                                }`}
+                                className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all ${checked
+                                  ? "bg-saffron/5 border border-saffron/20"
+                                  : "hover:bg-gray-50 border border-transparent"
+                                  }`}
                               >
                                 <input
                                   type="checkbox"
@@ -1004,11 +988,10 @@ function StepMealPlan({
                                   className="sr-only"
                                 />
                                 <div
-                                  className={`w-5 h-5 rounded flex items-center justify-center border-2 transition-all flex-shrink-0 ${
-                                    checked
-                                      ? "bg-saffron border-saffron"
-                                      : "border-gray-300"
-                                  }`}
+                                  className={`w-5 h-5 rounded flex items-center justify-center border-2 transition-all flex-shrink-0 ${checked
+                                    ? "bg-saffron border-saffron"
+                                    : "border-gray-300"
+                                    }`}
                                 >
                                   {checked && (
                                     <Check size={13} className="text-white" />
@@ -1251,7 +1234,7 @@ function StepDetails({
           />
           {form.eventDate &&
             new Date(form.eventDate) <
-              new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) && (
+            new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) && (
               <p className="text-red-500 text-xs mt-1">
                 Event date must be at least 7 days from today
               </p>
@@ -1309,11 +1292,10 @@ function PlanCategory({
               key={plan.id}
               type="button"
               onClick={() => onToggle(plan.id)}
-              className={`relative text-left p-5 rounded-xl border-2 transition-all ${
-                isSelected
-                  ? "border-saffron bg-saffron/5"
-                  : "border-gray-100 hover:border-saffron/30"
-              }`}
+              className={`relative text-left p-5 rounded-xl border-2 transition-all ${isSelected
+                ? "border-saffron bg-saffron/5"
+                : "border-gray-100 hover:border-saffron/30"
+                }`}
             >
               {isSelected && (
                 <div className="absolute top-3 right-3 w-6 h-6 bg-saffron rounded-full flex items-center justify-center">
