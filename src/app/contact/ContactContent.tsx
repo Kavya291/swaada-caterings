@@ -174,20 +174,25 @@ export default function ContactContent() {
                   Get in Touch
                 </h3>
                 <div className="space-y-4">
-                  <a
-                    href="tel:+918105758067"
-                    className="flex items-center gap-4 p-3 rounded-xl hover:bg-saffron/5 transition-colors"
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-saffron/10 flex items-center justify-center flex-shrink-0">
-                      <Phone size={18} className="text-saffron" />
+                  <div className="space-y-4 p-3 rounded-xl bg-saffron/5">
+                    <p className="text-xs text-dark-light/60">Call us</p>
+                    <div className="flex flex-col gap-2">
+                      <a
+                        href="tel:+918105758067"
+                        className="flex items-center gap-3 text-sm font-semibold text-dark hover:text-saffron transition-colors"
+                      >
+                        <Phone size={14} className="text-saffron" />
+                        8105758067
+                      </a>
+                      <a
+                        href="tel:+917892861158"
+                        className="flex items-center gap-3 text-sm font-semibold text-dark hover:text-saffron transition-colors"
+                      >
+                        <Phone size={14} className="text-saffron" />
+                        7892861158
+                      </a>
                     </div>
-                    <div>
-                      <p className="text-xs text-dark-light/60">Call us</p>
-                      <p className="text-sm font-semibold text-dark">
-                        +91 8105758067
-                      </p>
-                    </div>
-                  </a>
+                  </div>
                   <a
                     href="mailto:hello.swaadacaterings@gmail.com"
                     className="flex items-center gap-4 p-3 rounded-xl hover:bg-saffron/5 transition-colors"

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import BookingWizard from "./BookingWizard";
+import BookingWizard from "@/app/book/BookingWizard";
 
 export const metadata: Metadata = {
   title: "Book Now",

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import MenuContent from "./MenuContent";
+import MenuContent from "@/app/menu/MenuContent";
 
 export const metadata: Metadata = {
   title: "Our Menu",
