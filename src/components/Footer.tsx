@@ -94,7 +94,7 @@ export default function Footer() {
                 hello.swaadacaterings@gmail.com
               </a>
               <a
-                href="https://wa.me/917892861158"
+                href="https://wa.me/918105758067"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 mt-3 px-5 py-2.5 bg-whatsapp text-white rounded-full text-sm font-medium hover:bg-whatsapp/90 transition-all hover:scale-105"

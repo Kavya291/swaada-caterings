@@ -651,7 +651,7 @@ function CTABanner() {
             custom={2}
           >
             <a
-              href="https://wa.me/917892861158"
+              href="https://wa.me/918105758067"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-whatsapp text-white font-bold rounded-full text-lg hover:bg-whatsapp/90 hover:scale-105 transition-all shadow-xl"
@@ -665,6 +665,13 @@ function CTABanner() {
             >
               Book Now →
             </Link>
+            <a
+              href="tel:8105758067"
+              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white/40 text-white font-medium rounded-full text-lg hover:bg-white/10 transition-all"
+            >
+              <Phone size={20} />
+              8105758067
+            </a>
             <a
               href="tel:7892861158"
               className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white/40 text-white font-medium rounded-full text-lg hover:bg-white/10 transition-all"
