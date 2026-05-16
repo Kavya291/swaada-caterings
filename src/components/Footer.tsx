@@ -73,7 +73,14 @@ export default function Footer() {
             </h4>
             <div className="space-y-3">
               <a
-                href="tel:+918105758067"
+                href="tel:7892861158"
+                className="flex items-center gap-3 text-white/70 hover:text-saffron transition-colors text-sm"
+              >
+                <Phone size={16} className="text-saffron flex-shrink-0" />
+                +91 7892861158
+              </a>
+              <a
+                href="tel:8105758067"
                 className="flex items-center gap-3 text-white/70 hover:text-saffron transition-colors text-sm"
               >
                 <Phone size={16} className="text-saffron flex-shrink-0" />
@@ -87,7 +94,7 @@ export default function Footer() {
                 hello.swaadacaterings@gmail.com
               </a>
               <a
-                href="https://wa.me/918105758067"
+                href="https://wa.me/917892861158"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 mt-3 px-5 py-2.5 bg-whatsapp text-white rounded-full text-sm font-medium hover:bg-whatsapp/90 transition-all hover:scale-105"

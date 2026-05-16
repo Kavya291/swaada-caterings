@@ -178,18 +178,18 @@ export default function ContactContent() {
                     <p className="text-xs text-dark-light/60">Call us</p>
                     <div className="flex flex-col gap-2">
                       <a
-                        href="tel:+918105758067"
-                        className="flex items-center gap-3 text-sm font-semibold text-dark hover:text-saffron transition-colors"
-                      >
-                        <Phone size={14} className="text-saffron" />
-                        8105758067
-                      </a>
-                      <a
-                        href="tel:+917892861158"
+                        href="tel:7892861158"
                         className="flex items-center gap-3 text-sm font-semibold text-dark hover:text-saffron transition-colors"
                       >
                         <Phone size={14} className="text-saffron" />
                         7892861158
+                      </a>
+                      <a
+                        href="tel:8105758067"
+                        className="flex items-center gap-3 text-sm font-semibold text-dark hover:text-saffron transition-colors"
+                      >
+                        <Phone size={14} className="text-saffron" />
+                        8105758067
                       </a>
                     </div>
                   </div>
@@ -221,7 +221,7 @@ export default function ContactContent() {
                 </div>
 
                 <a
-                  href="https://wa.me/918105758067"
+                  href="https://wa.me/917892861158"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 flex items-center justify-center gap-2 w-full py-3 bg-whatsapp text-white font-semibold rounded-xl hover:bg-whatsapp/90 transition-all"

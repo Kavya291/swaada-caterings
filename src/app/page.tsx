@@ -15,6 +15,10 @@ import {
   Star,
   ChevronRight,
   MessageCircle,
+  Download,
+  Phone,
+  MapPin,
+  Award,
 } from "lucide-react";
 
 const fadeUp = {
@@ -93,6 +97,42 @@ function Hero() {
             View Our Menu
           </Link>
         </motion.div>
+
+        {/* Big Menu Cards CTA */}
+        <motion.div
+          className="mt-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.75, duration: 0.8 }}
+        >
+          <Link
+            href="/menu"
+            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-saffron to-amber-400 text-maroon font-extrabold rounded-2xl text-xl hover:scale-105 transition-all shadow-2xl border-2 border-white/30"
+          >
+            <Download size={24} />
+            View &amp; Download Our Menu Cards
+          </Link>
+          <p className="text-white/60 text-sm mt-2">9 menus available — Andhra, Karnataka, Marriage, Birthday &amp; more</p>
+        </motion.div>
+
+        {/* Quick stats */}
+        <motion.div
+          className="mt-14 grid grid-cols-3 gap-4 max-w-lg mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+        >
+          {[
+            { value: "500+", label: "Events Done" },
+            { value: "10K+", label: "Happy Guests" },
+            { value: "30", label: "Districts Served" },
+          ].map((stat) => (
+            <div key={stat.label} className="text-center">
+              <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
+              <p className="text-white/60 text-xs md:text-sm">{stat.label}</p>
+            </div>
+          ))}
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}
@@ -118,7 +158,7 @@ const features = [
   },
   {
     icon: Users,
-    title: "100+ Guests Served",
+    title: "100–2000 Guests",
     desc: "From intimate gatherings to grand celebrations — we scale effortlessly.",
   },
   {
@@ -130,6 +170,16 @@ const features = [
     icon: UtensilsCrossed,
     title: "Custom Menus",
     desc: "Tailor every dish to match your taste, budget, and dietary needs.",
+  },
+  {
+    icon: Award,
+    title: "Premium Quality",
+    desc: "Only the finest ingredients sourced from trusted local suppliers.",
+  },
+  {
+    icon: MapPin,
+    title: "All Karnataka",
+    desc: "Serving all 30 districts of Karnataka with dedicated logistics.",
   },
 ];
 
@@ -158,7 +208,7 @@ function WhySwaada() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -195,6 +245,11 @@ const occasions = [
   { icon: Building2, label: "Corporate", emoji: "🏢" },
   { icon: Home, label: "Housewarming", emoji: "🏠" },
   { icon: Sparkles, label: "Festival", emoji: "🎉" },
+  { label: "Seemantham", emoji: "🌸" },
+  { label: "Engagement", emoji: "💍" },
+  { label: "Religious", emoji: "🙏" },
+  { label: "Graduation", emoji: "🎓" },
+  { label: "Anniversary", emoji: "🥂" },
 ];
 
 function Occasions() {
@@ -234,11 +289,108 @@ function Occasions() {
               <span className="text-4xl md:text-5xl mb-3 group-hover:scale-110 transition-transform">
                 {o.emoji}
               </span>
-              <span className="text-sm md:text-base font-semibold text-dark group-hover:text-saffron transition-colors">
+              <span className="text-sm md:text-base font-semibold text-dark group-hover:text-saffron transition-colors text-center">
                 {o.label}
               </span>
             </motion.div>
           ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ─── MENU CARDS PREVIEW ─────────────────────────────
+const menuPreviews = [
+  { title: "Andhra Menu", emoji: "🌶️", desc: "Bold Andhra spices & traditional flavors", gradient: "from-red-700 to-orange-600" },
+  { title: "Birthday Menu", emoji: "🎂", desc: "Fun festive spreads with starters & desserts", gradient: "from-purple-700 to-pink-600" },
+  { title: "Brahmin Menu", emoji: "🙏", desc: "Pure veg Tamil Brahmin – no onion/garlic", gradient: "from-green-700 to-teal-600" },
+  { title: "Breakfast Menu", emoji: "☕", desc: "Fresh South Indian breakfast spreads", gradient: "from-amber-600 to-yellow-500" },
+  { title: "Karnataka Menu", emoji: "🏰", desc: "Traditional Karnataka-style feast", gradient: "from-yellow-600 to-amber-500" },
+  { title: "Marriage Menu", emoji: "💍", desc: "Grand wedding feast with all courses", gradient: "from-red-800 to-rose-600" },
+  { title: "North & South Menu", emoji: "🍱", desc: "Best of both North & South Indian", gradient: "from-blue-700 to-indigo-600" },
+  { title: "North Indian Menu", emoji: "🫓", desc: "Rich & flavorful North Indian cuisine", gradient: "from-orange-700 to-red-600" },
+  { title: "Seemantham Menu", emoji: "🌸", desc: "Tamil Nadu baby shower ceremony menus", gradient: "from-teal-700 to-green-600" },
+];
+
+function MenuCardsPreview() {
+  return (
+    <section className="py-20 md:py-28 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-14"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeUp}
+          custom={0}
+        >
+          <span className="text-saffron font-semibold text-sm uppercase tracking-wider">
+            Our Premium Menus
+          </span>
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-dark mt-2">
+            Menu Cards
+          </h2>
+          <p className="text-dark-light/70 mt-3 max-w-xl mx-auto">
+            Download our beautifully designed menu cards — each one crafted for a specific occasion.
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={stagger}
+        >
+          {menuPreviews.map((menu, i) => (
+            <motion.div
+              key={menu.title}
+              variants={fadeUp}
+              custom={i}
+              className="group relative rounded-2xl overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300"
+            >
+              <div className={`bg-gradient-to-br ${menu.gradient} p-6 text-white`}>
+                {/* Decorative circles */}
+                <div className="absolute top-0 right-0 w-20 h-20 rounded-full bg-white/10 -translate-y-6 translate-x-6" />
+                <div className="absolute bottom-0 left-0 w-14 h-14 rounded-full bg-white/10 translate-y-4 -translate-x-4" />
+
+                {/* Brand badge */}
+                <div className="relative z-10 flex items-center gap-2 mb-4">
+                  <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center text-base">
+                    {menu.emoji}
+                  </div>
+                  <div>
+                    <p className="text-white/70 text-xs">Swaada Caterings</p>
+                    <p className="text-white/50 text-xs">Every Occasion, Perfectly Served</p>
+                  </div>
+                </div>
+
+                <h3 className="relative z-10 text-lg font-bold mb-1">{menu.title}</h3>
+                <p className="relative z-10 text-white/80 text-sm">{menu.desc}</p>
+
+                <div className="relative z-10 mt-4 flex items-center gap-2 text-white/70 text-xs">
+                  <Download size={12} />
+                  <span>Download PDF</span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          className="text-center mt-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <Link
+            href="/menu"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-saffron text-white font-bold rounded-full hover:bg-saffron-dark transition-all shadow-lg hover:shadow-xl hover:scale-105"
+          >
+            View All Menus & Download PDFs
+            <ChevronRight size={18} />
+          </Link>
         </motion.div>
       </div>
     </section>
@@ -291,7 +443,7 @@ const packages = [
 
 function Packages() {
   return (
-    <section className="py-20 md:py-28 bg-white">
+    <section className="py-20 md:py-28 bg-cream-warm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-14"
@@ -324,11 +476,10 @@ function Packages() {
               key={pkg.meal}
               variants={fadeUp}
               custom={i}
-              className={`relative group rounded-2xl overflow-hidden border transition-all duration-300 hover:shadow-2xl ${
-                pkg.popular
-                  ? "border-saffron shadow-lg scale-[1.02]"
-                  : "border-gray-100 hover:border-saffron/30"
-              }`}
+              className={`relative group rounded-2xl overflow-hidden border transition-all duration-300 hover:shadow-2xl ${pkg.popular
+                ? "border-saffron shadow-lg scale-[1.02]"
+                : "border-gray-100 hover:border-saffron/30"
+                }`}
             >
               {pkg.popular && (
                 <div className="absolute top-4 right-4 px-3 py-1 bg-saffron text-white text-xs font-bold rounded-full z-10">
@@ -403,7 +554,7 @@ const testimonials = [
 
 function Testimonials() {
   return (
-    <section className="py-20 md:py-28 bg-cream-warm">
+    <section className="py-20 md:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-14"
@@ -433,7 +584,7 @@ function Testimonials() {
               key={t.name}
               variants={fadeUp}
               custom={i}
-              className="p-6 rounded-2xl bg-white border border-saffron/10 shadow-sm hover:shadow-md transition-shadow"
+              className="p-6 rounded-2xl bg-cream-warm border border-saffron/10 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex gap-1 mb-4">
                 {Array.from({ length: t.rating }).map((_, j) => (
@@ -500,7 +651,7 @@ function CTABanner() {
             custom={2}
           >
             <a
-              href="https://wa.me/918105758067"
+              href="https://wa.me/917892861158"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-whatsapp text-white font-bold rounded-full text-lg hover:bg-whatsapp/90 hover:scale-105 transition-all shadow-xl"
@@ -514,6 +665,13 @@ function CTABanner() {
             >
               Book Now →
             </Link>
+            <a
+              href="tel:7892861158"
+              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white/40 text-white font-medium rounded-full text-lg hover:bg-white/10 transition-all"
+            >
+              <Phone size={20} />
+              7892861158
+            </a>
           </motion.div>
         </motion.div>
       </div>
@@ -528,6 +686,7 @@ export default function HomePage() {
       <Hero />
       <WhySwaada />
       <Occasions />
+      <MenuCardsPreview />
       <Packages />
       <Testimonials />
       <CTABanner />
