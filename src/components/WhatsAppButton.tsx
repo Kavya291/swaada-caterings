@@ -2,10 +2,15 @@
 
 import { motion } from "framer-motion";
 
+const WHATSAPP_NUMBER = "918105758067";
+const WHATSAPP_MESSAGE = encodeURIComponent(
+  "Hello Swaada Caterings! 🙏\n\nI'd like to enquire about your catering services. Could you please share more details about your packages and pricing?\n\nThank you!"
+);
+
 export default function WhatsAppButton() {
   return (
     <motion.a
-      href="https://wa.me/918105758067"
+      href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-whatsapp rounded-full shadow-lg hover:shadow-xl transition-shadow animate-pulse-glow"

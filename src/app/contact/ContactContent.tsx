@@ -221,7 +221,7 @@ export default function ContactContent() {
                 </div>
 
                 <a
-                  href="https://wa.me/917892861158"
+                  href="https://wa.me/918105758067"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 flex items-center justify-center gap-2 w-full py-3 bg-whatsapp text-white font-semibold rounded-xl hover:bg-whatsapp/90 transition-all"

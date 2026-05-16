@@ -692,7 +692,11 @@ function StepMealPlan({
           <p className="text-sm text-dark-light/70 bg-saffron/5 border border-saffron/20 rounded-xl p-3 mb-4">
             💡 All prices are reasonable per plate. Concessions available based on guest count — contact us to discuss!
           </p>
-          <div className="space-y-3 mb-4 max-h-[50vh] overflow-y-auto pr-2">
+          <div className="p-3 rounded-xl bg-maroon text-white mb-3">
+            <p className="text-sm">Items selected: <strong>{form.selectedCustom.length}</strong> | Approx per plate: <strong>₹{customPerPlate}</strong></p>
+            <p className="text-white/70 text-xs">Final pricing confirmed after discussion with our team</p>
+          </div>
+          <div className="space-y-3 max-h-[50vh] overflow-y-auto pr-2">
             {customCategories.map((cat) => {
               const isExpanded = expanded.includes(cat.name);
               return (
@@ -710,42 +714,35 @@ function StepMealPlan({
                     </div>
                     <ChevronDown size={18} className={`text-gray-400 transition-transform ${isExpanded ? "rotate-180" : ""}`} />
                   </button>
-                  <AnimatePresence>
-                    {isExpanded && (
-                      <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="overflow-hidden">
-                        <div className="p-3 space-y-1">
-                          {cat.items.map((item) => {
-                            const checked = form.selectedCustom.includes(item.name);
-                            return (
-                              <label
-                                key={item.name}
-                                className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all ${checked ? "bg-saffron/5 border border-saffron/20" : "hover:bg-gray-50 border border-transparent"}`}
-                              >
-                                <input type="checkbox" checked={checked} onChange={() => toggleCustom(item.name)} className="sr-only" />
-                                <div className={`w-5 h-5 rounded flex items-center justify-center border-2 transition-all flex-shrink-0 ${checked ? "bg-saffron border-saffron" : "border-gray-300"}`}>
-                                  {checked && <Check size={13} className="text-white" />}
-                                </div>
-                                <span className="flex-1 text-sm text-dark">{item.name}</span>
-                                <span className="text-sm font-semibold text-saffron whitespace-nowrap">
-                                  ₹{item.price}
-                                  <span className="text-xs font-normal text-dark-light/50">{item.unit}</span>
-                                </span>
-                              </label>
-                            );
-                          })}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {isExpanded && (
+                    <div className="p-3 space-y-1">
+                      {cat.items.map((item) => {
+                        const checked = form.selectedCustom.includes(item.name);
+                        return (
+                          <div
+                            key={item.name}
+                            role="button"
+                            tabIndex={0}
+                            onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleCustom(item.name); }}
+                            onKeyDown={(e) => { if (e.key === " " || e.key === "Enter") { e.preventDefault(); toggleCustom(item.name); } }}
+                            className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer select-none transition-colors ${checked ? "bg-saffron/5 border border-saffron/20" : "hover:bg-gray-50 border border-transparent"}`}
+                          >
+                            <div className={`w-5 h-5 rounded flex items-center justify-center border-2 transition-all flex-shrink-0 ${checked ? "bg-saffron border-saffron" : "border-gray-300"}`}>
+                              {checked && <Check size={13} className="text-white" />}
+                            </div>
+                            <span className="flex-1 text-sm text-dark">{item.name}</span>
+                            <span className="text-sm font-semibold text-saffron whitespace-nowrap">
+                              ₹{item.price}
+                              <span className="text-xs font-normal text-dark-light/50">{item.unit}</span>
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               );
             })}
-          </div>
-          <div className="sticky bottom-0 p-4 rounded-xl bg-maroon text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-            <div className="text-sm space-y-1">
-              <p>Items selected: <strong>{form.selectedCustom.length}</strong> | Approx per plate: <strong>₹{customPerPlate}</strong></p>
-              <p className="text-white/70 text-xs">Final pricing confirmed after discussion with our team</p>
-            </div>
           </div>
         </>
       )}
